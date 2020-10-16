@@ -1,0 +1,25 @@
+mysql:
+  name: mysql
+  group: db
+  container:
+    image: mysql:5.6
+    port: 3306
+  service:
+    clusterIP: None
+    port: 3306
+  volume:
+    name: mysql-persistent-storage
+    kind: PersistentVolume
+    mountPath: /var/lib/mysql
+    hostPath: /mnt/data
+    pvc:
+      name: mysql-pv-claim
+      kind: PersistentVolumeClaim
+      storageClass: manual
+      accessMode: ReadWriteOnce
+      storage: 4Gi
+  config:
+    name: mysql-config
+    data:
+       - key: key
+         value: value

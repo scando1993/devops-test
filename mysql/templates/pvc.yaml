@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: {{ .Values.mysql.volume.pvc.kind }}
+metadata:
+  name: {{ .Values.mysql.volume.pvc.name }}
+spec:
+  storageClassName: {{ .Values.mysql.volume.pvc.storageClass }}
+  accessModes:
+    - {{ .Values.mysql.volume.pvc.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.mysql.volume.pvc.storage }}
